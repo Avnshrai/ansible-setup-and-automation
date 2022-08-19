@@ -1,0 +1,12 @@
+---
+ - hosts: 127.0.0.1
+   vars:
+     ansible_python_interpreter: /usr/bin/python3
+   become: root
+   gather_facts: false
+   connection: local
+   tasks:
+    - name: "Statistics CPU Memory Disk Utilization..."
+      shell: cat /proc/meminfo
+      register: out
+    - debug: var=out.stdout_lines
